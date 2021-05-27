@@ -44,6 +44,8 @@ public class LoginActivity extends AppCompatActivity {
                             if(jsonObject != null)
                             {
                                 Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
                             }
                         } catch(JSONException e) {
                             Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_LONG).show();
@@ -60,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
