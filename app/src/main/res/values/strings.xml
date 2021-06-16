@@ -5,4 +5,25 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="name">Name</string>
+    <string name="apply_job">Apply Job</string>
+    <string name="job_name">Job Name</string>
+    <string name="job_category">Job Category</string>
+    <string name="job_fee">Job Fee</string>
+    <string name="x">x</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="e_wallet">E-wallet</string>
+    <string name="bank">Bank</string>
+    <string name="referral_code">Referral Code</string>
+    <string name="total_fee">Total Fee</string>
+    <string name="count">Count</string>
+    <string name="apply_now">Apply Now</string>
+    <string name="invoice_id">Invoice ID: %d</string>
+    <string name="jobseeker_name">Jobseeker Name</string>
+    <string name="invoice_date">Invoice Date</string>
+    <string name="payment_type">Payment Type</string>
+    <string name="job_name_title">Job Name:</string>
+    <string name="applied_job">Applied Job</string>
+    <string name="cancel">Cancel</string>
+    <string name="finish">Finish</string>
+    <string name="invoice_status">Invoice Status</string>
 </resources>

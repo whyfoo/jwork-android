@@ -3,6 +3,7 @@ package com.haidarh.jwork_android;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                             {
                                 Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                intent.putExtra("jobseekerID", jsonObject.getInt("id"));
                                 startActivity(intent);
                             }
                         } catch(JSONException e) {
@@ -62,7 +64,8 @@ public class LoginActivity extends AppCompatActivity {
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra("jobseekerID", 1);
                 startActivity(intent);
             }
         });
