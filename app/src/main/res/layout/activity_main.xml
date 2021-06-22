@@ -7,10 +7,24 @@
     android:background="#ffffff"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/title_recruiter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/recruiter"
+        android:textSize="20sp"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ExpandableListView
         android:id="@+id/lvExpandable"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/title_recruiter"
+        />
 
     <Button
         android:id="@+id/btn_applied_job"

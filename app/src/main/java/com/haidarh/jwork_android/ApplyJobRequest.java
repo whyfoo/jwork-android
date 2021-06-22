@@ -9,7 +9,7 @@ import java.util.Map;
 public class ApplyJobRequest extends StringRequest {
     private static final String URL = "http://10.0.2.2:8080/invoice/";
     private Map<String, String> params;
-
+    
     public ApplyJobRequest(String jobIdList, String jobseekerId, Response.Listener<String> listener)
     {
         super(Method.POST, URL+"createBankPayment", listener, null);
