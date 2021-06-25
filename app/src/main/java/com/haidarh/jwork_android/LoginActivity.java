@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,16 +22,26 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
+    SharedPrefManager sharedPrefManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        sharedPrefManager = new SharedPrefManager(this);
 
         EditText etEmail = findViewById(R.id.et_email);
         EditText etPassword = findViewById(R.id.et_password);
         Button btnLogin = findViewById(R.id.btn_login);
         TextView tvRegister = findViewById(R.id.tv_register);
         TextInputLayout layoutPassword = findViewById(R.id.layout_password);
+
+        if (sharedPrefManager.getSPLoginStatus()){
+            startActivity(new Intent(LoginActivity.this, MainActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+            finish();
+        }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,9 +63,15 @@ public class LoginActivity extends AppCompatActivity {
                                 if(jsonObject != null)
                                 {
                                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
+
+                                    sharedPrefManager.saveSPBoolean("sp_login_status", true);
+                                    sharedPrefManager.saveSPInt("sp_id", jsonObject.getInt("id"));
+                                    sharedPrefManager.saveSPString("sp_name", jsonObject.getString("name"));
+
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     intent.putExtra("jobseekerID", jsonObject.getInt("id"));
                                     startActivity(intent);
+                                    finish();
                                 }
                             } catch(JSONException e) {
                                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(LoginActivity.this);

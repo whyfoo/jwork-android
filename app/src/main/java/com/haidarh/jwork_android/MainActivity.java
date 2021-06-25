@@ -3,12 +3,14 @@ package com.haidarh.jwork_android;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.RotateDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     protected ArrayList<Job> jobIdList = new ArrayList<>();
     protected HashMap<Recruiter, ArrayList<Job>> childMapping = new HashMap<>();
 
+    SharedPrefManager sharedPrefManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +40,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_logout);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.font_jwork);
 
+        sharedPrefManager = new SharedPrefManager(this);
+
+        int jobseekerID;
         Bundle extras = getIntent().getExtras();
-        int jobseekerID = extras.getInt("jobseekerID");
+        if (extras != null) {
+            jobseekerID = extras.getInt("jobseekerID");
+        } else {
+            jobseekerID = sharedPrefManager.getSPid();
+        }
 
         refreshList();
 
         Button btnAppliedJob = findViewById(R.id.btn_applied_job);
+        ProgressBar progressBar = findViewById(R.id.progress_bar);
 
         btnAppliedJob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,8 +70,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void refreshList() {
+        int jobseekerID;
         Bundle extras = getIntent().getExtras();
-        int jobseekerID = extras.getInt("jobseekerID");
+        if (extras != null) {
+            jobseekerID = sharedPrefManager.getSPid();
+//            jobseekerID = extras.getInt("jobseekerId");
+        } else {
+            jobseekerID = sharedPrefManager.getSPid();
+        }
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
@@ -161,6 +182,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp(){
+        sharedPrefManager.saveSPBoolean("sp_login_status", false);
+        sharedPrefManager.saveSPInt("sp_id", 0);
+        sharedPrefManager.saveSPString("sp_name", "");
+        startActivity(new Intent(MainActivity.this, LoginActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
         finish();
         return true;
     }
