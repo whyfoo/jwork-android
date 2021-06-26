@@ -115,6 +115,8 @@ public class FinishedJobActivity extends AppCompatActivity {
                     TextView tvInvoiceStatus = findViewById(R.id.tv_invoice_status);
                     TextView titleRefCode = findViewById(R.id.title_refcode);
                     TextView tvRefCode = findViewById(R.id.tv_refcode);
+                    Button btnCancel = findViewById(R.id.btn_cancel);
+                    Button btnFinish = findViewById(R.id.btn_finish);
 
                     JSONArray jsonResponse = new JSONArray(response);
                     if (jsonResponse.length() != 0){
@@ -133,7 +135,7 @@ public class FinishedJobActivity extends AppCompatActivity {
                             invoiceId = invoice.getInt("id");
 
                             tvJobseekerName.setText(jobseeker.getString("name"));
-                            tvInvoiceDate.setText(invoice.getString("date"));
+                            tvInvoiceDate.setText(invoice.getString("date").substring(0,10));
                             tvPaymentType.setText(invoice.getString("paymentType"));
                             tvTotalFee.setText(invoice.getString("totalFee"));
                             tvInvoiceStatus.setText(invoice.getString("invoiceStatus"));
@@ -142,13 +144,24 @@ public class FinishedJobActivity extends AppCompatActivity {
                                 titleRefCode.setVisibility(View.INVISIBLE);
                                 tvRefCode.setVisibility(View.INVISIBLE);
                             } else {
+                                titleRefCode.setVisibility(View.VISIBLE);
+                                tvRefCode.setVisibility(View.VISIBLE);
                                 tvRefCode.setText(invoice.getJSONObject("bonus").getString("referralCode"));
+                            }
+
+                            if (invoice.getString("invoiceStatus").equals("OnGoing")){
+                                btnCancel.setEnabled(true);
+                                btnFinish.setEnabled(true);
+                            } else {
+                                btnCancel.setEnabled(false);
+                                btnFinish.setEnabled(false);
                             }
                         }
 
                         ConstraintLayout layout = findViewById(R.id.layout_finished_job);
                         layout.setVisibility(View.VISIBLE);
                     } else {
+                        Toast.makeText(FinishedJobActivity.this, "No applied job yet", Toast.LENGTH_SHORT).show();
                         finish();
                     }
 

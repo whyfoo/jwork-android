@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">jwork-android</string>
+    <string name="app_name">JWORK</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -27,4 +27,5 @@
     <string name="finish">Finish</string>
     <string name="invoice_status">Invoice Status</string>
     <string name="recruiter">Recruiter List</string>
+    <string name="register_now">Register Now</string>
 </resources>

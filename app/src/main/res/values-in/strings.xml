@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">jwork-android</string>
+    <string name="app_name">JWORK</string>
     <string name="email">Email</string>
     <string name="password">Kata Kunci</string>
     <string name="login">Login</string>
@@ -8,23 +8,24 @@
     <string name="apply_job">Daftar Kerja</string>
     <string name="job_name">Nama Pekerjaan</string>
     <string name="job_category">Kategori Pekerjaan</string>
-    <string name="job_fee">Job Fee</string>
+    <string name="job_fee">Biaya</string>
     <string name="x">x</string>
-    <string name="payment_method">Payment Method</string>
+    <string name="payment_method">Metode Pembayaran</string>
     <string name="e_wallet">E-wallet</string>
     <string name="bank">Bank</string>
-    <string name="referral_code">Referral Code</string>
-    <string name="total_fee">Total Fee</string>
-    <string name="count">Count</string>
-    <string name="apply_now">Apply Now</string>
+    <string name="referral_code">Kode Referal</string>
+    <string name="total_fee">Total Biaya</string>
+    <string name="count">Hitung</string>
+    <string name="apply_now">Daftar Sekarang</string>
     <string name="invoice_id">Invoice ID: %d</string>
-    <string name="jobseeker_name">Jobseeker Name</string>
-    <string name="invoice_date">Invoice Date</string>
-    <string name="payment_type">Payment Type</string>
-    <string name="job_name_title">Job Name:</string>
-    <string name="applied_job">Applied Job</string>
-    <string name="cancel">Cancel</string>
-    <string name="finish">Finish</string>
+    <string name="jobseeker_name">Nama Jobseeker</string>
+    <string name="invoice_date">Tanggal Invoice</string>
+    <string name="payment_type">Tipe Pembayaran</string>
+    <string name="job_name_title">Nama Pekerjaan: </string>
+    <string name="applied_job">Pekerjaan Didaftarkan</string>
+    <string name="cancel">Batalkan</string>
+    <string name="finish">Selesai</string>
     <string name="invoice_status">Invoice Status</string>
-    <string name="recruiter">Perekrut Pekerjaan</string>
+    <string name="recruiter">Perekrut</string>
+    <string name="register_now">Daftar Akun Sekarang</string>
 </resources>

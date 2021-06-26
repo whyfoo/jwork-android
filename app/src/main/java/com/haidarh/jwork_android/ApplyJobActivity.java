@@ -46,6 +46,7 @@ public class ApplyJobActivity extends AppCompatActivity {
         final TextView tvTotalFee = findViewById(R.id.tv_totalfee);
         final Button btnCount = findViewById(R.id.btn_count);
         final Button btnApply = findViewById(R.id.btn_apply);
+        final TextView titlePayment = findViewById(R.id.title_payment_type);
 
         btnApply.setEnabled(false);
         textCode.setVisibility(View.INVISIBLE);
@@ -116,6 +117,8 @@ public class ApplyJobActivity extends AppCompatActivity {
                     RequestQueue queue = Volley.newRequestQueue(ApplyJobActivity.this);
                     queue.add(bonusRequest);
                     btnApply.setEnabled(true);
+                } else {
+                    Toast.makeText(ApplyJobActivity.this, "Select Payment Method first", Toast.LENGTH_LONG).show();
                 }
             }
         });

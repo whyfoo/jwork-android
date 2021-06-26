@@ -48,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
                 } else if (!email.matches("^[\\w&*_~]+(\\.?[\\w&*_~]+)*@[^-][\\w\\-\\.]+$")) {
                     etEmail.setError("Email format incorrect");
                 } else if (!password.matches("(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{6,}")){
-                    etPassword.setError("Password format incorrect");
+                    etPassword.setError("Your password must contain minimal 6 characters, including minimal 1 UpperCase and 1 Number");
                 } else {
                     Response.Listener<String> responseListener = new Response.Listener<String>()
                     {

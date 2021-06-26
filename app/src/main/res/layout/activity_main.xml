@@ -23,8 +23,9 @@
         android:id="@+id/lvExpandable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/title_recruiter"
-        />
+        app:layout_constraintTop_toBottomOf="@id/title_recruiter">
+
+    </ExpandableListView>
 
     <Button
         android:id="@+id/btn_applied_job"

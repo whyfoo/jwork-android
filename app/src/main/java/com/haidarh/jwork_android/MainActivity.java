@@ -1,7 +1,9 @@
 package com.haidarh.jwork_android;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.RotateDrawable;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -27,6 +30,9 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
+    ExpandableListView expandableListView;
+    ExpandableListAdapter expandableListAdapter;
+
     protected ArrayList<Recruiter> listRecruiter = new ArrayList<>();
     protected ArrayList<Job> jobIdList = new ArrayList<>();
     protected HashMap<Recruiter, ArrayList<Job>> childMapping = new HashMap<>();
@@ -41,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_logout);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.font_jwork);
 
         sharedPrefManager = new SharedPrefManager(this);
 
@@ -73,8 +77,7 @@ public class MainActivity extends AppCompatActivity {
         int jobseekerID;
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            jobseekerID = sharedPrefManager.getSPid();
-//            jobseekerID = extras.getInt("jobseekerId");
+            jobseekerID = extras.getInt("jobseekerId");
         } else {
             jobseekerID = sharedPrefManager.getSPid();
         }
@@ -143,10 +146,20 @@ public class MainActivity extends AppCompatActivity {
                             childMapping.put(rec, temp);
                         }
 
-                        ExpandableListView lvExp = findViewById(R.id.lvExpandable);
-                        lvExp.setAdapter(new MainListAdapter(MainActivity.this, listRecruiter, childMapping));
-
-                        lvExp.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+                        expandableListView = findViewById(R.id.lvExpandable);
+                        expandableListAdapter = new MainExpRecycler(MainActivity.this, listRecruiter, childMapping);
+                        expandableListView.setAdapter(expandableListAdapter);
+                        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+                            int lastExpandedPosition = -1;
+                            @Override
+                            public void onGroupExpand(int groupPosition) {
+                                if (lastExpandedPosition != -1 && groupPosition != lastExpandedPosition){
+                                    expandableListView.collapseGroup(lastExpandedPosition);
+                                }
+                                lastExpandedPosition = groupPosition;
+                            }
+                        });
+                        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
                             @Override
                             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                                 Job selectedJob = childMapping.get(listRecruiter.get(groupPosition)).get(childPosition);
@@ -160,6 +173,24 @@ public class MainActivity extends AppCompatActivity {
                                 return true;
                             }
                         });
+
+//                        ExpandableListView lvExp = findViewById(R.id.lvExpandable);
+//                        lvExp.setAdapter(new MainListAdapter(MainActivity.this, listRecruiter, childMapping));
+//
+//                        lvExp.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+//                            @Override
+//                            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+//                                Job selectedJob = childMapping.get(listRecruiter.get(groupPosition)).get(childPosition);
+//                                Intent intent = new Intent(MainActivity.this, ApplyJobActivity.class);
+//                                intent.putExtra("jobseekerID", jobseekerID);
+//                                intent.putExtra("jobID", selectedJob.getId());
+//                                intent.putExtra("jobName", selectedJob.getName());
+//                                intent.putExtra("jobCategory", selectedJob.getCategory());
+//                                intent.putExtra("jobFee", selectedJob.getFee());
+//                                startActivity(intent);
+//                                return true;
+//                            }
+//                        });
                     }
 
                 } catch (JSONException e) {
@@ -182,12 +213,30 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp(){
-        sharedPrefManager.saveSPBoolean("sp_login_status", false);
-        sharedPrefManager.saveSPInt("sp_id", 0);
-        sharedPrefManager.saveSPString("sp_name", "");
-        startActivity(new Intent(MainActivity.this, LoginActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-        finish();
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(MainActivity.this);
+        dialogBuilder.setMessage("Are you sure to sign out?");
+        dialogBuilder.setTitle("Warning");
+        dialogBuilder.setCancelable(false);
+        dialogBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        sharedPrefManager.saveSPBoolean("sp_login_status", false);
+                        sharedPrefManager.saveSPInt("sp_id", 0);
+                        sharedPrefManager.saveSPString("sp_name", "");
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                        finish();
+                    }
+                });
+        dialogBuilder.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+        AlertDialog alert = dialogBuilder.create();
+        alert.show();
         return true;
     }
 }
