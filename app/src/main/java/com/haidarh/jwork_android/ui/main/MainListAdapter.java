@@ -1,4 +1,4 @@
-package com.haidarh.jwork_android;
+package com.haidarh.jwork_android.ui.main;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -7,6 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+
+import com.haidarh.jwork_android.R;
+import com.haidarh.jwork_android.classes.Job;
+import com.haidarh.jwork_android.classes.Recruiter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

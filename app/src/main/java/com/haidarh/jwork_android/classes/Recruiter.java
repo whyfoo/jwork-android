@@ -1,4 +1,6 @@
-package com.haidarh.jwork_android;
+package com.haidarh.jwork_android.classes;
+
+import com.haidarh.jwork_android.classes.Location;
 
 public class Recruiter
 {

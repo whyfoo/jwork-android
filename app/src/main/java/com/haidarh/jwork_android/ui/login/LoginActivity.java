@@ -1,4 +1,4 @@
-package com.haidarh.jwork_android;
+package com.haidarh.jwork_android.ui.login;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +16,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputLayout;
+import com.haidarh.jwork_android.ui.main.MainActivity;
+import com.haidarh.jwork_android.R;
+import com.haidarh.jwork_android.ui.register.RegisterActivity;
+import com.haidarh.jwork_android.utils.SharedPrefManager;
+import com.haidarh.jwork_android.request.LoginRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;

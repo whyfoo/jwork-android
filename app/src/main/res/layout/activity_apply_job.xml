@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="12dp"
-    tools:context=".ApplyJobActivity">
+    android:padding="24dp"
+    tools:context=".ui.apply.ApplyJobActivity">
 
     <TextView
         android:id="@+id/title_main"

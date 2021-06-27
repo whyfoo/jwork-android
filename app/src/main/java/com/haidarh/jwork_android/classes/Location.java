@@ -1,4 +1,4 @@
-package com.haidarh.jwork_android;
+package com.haidarh.jwork_android.classes;
 
 public class Location
 {

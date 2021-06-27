@@ -1,4 +1,4 @@
-package com.haidarh.jwork_android;
+package com.haidarh.jwork_android.ui.apply;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +14,9 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.haidarh.jwork_android.R;
+import com.haidarh.jwork_android.request.ApplyJobRequest;
+import com.haidarh.jwork_android.request.BonusRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package com.haidarh.jwork_android;
+package com.haidarh.jwork_android.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
