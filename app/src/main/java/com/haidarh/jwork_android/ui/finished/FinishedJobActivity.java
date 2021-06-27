@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -19,6 +20,8 @@ import com.android.volley.toolbox.Volley;
 import com.haidarh.jwork_android.R;
 import com.haidarh.jwork_android.classes.Invoice;
 import com.haidarh.jwork_android.request.JobFetchRequest;
+import com.haidarh.jwork_android.ui.login.LoginActivity;
+import com.haidarh.jwork_android.ui.main.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -90,15 +93,19 @@ public class FinishedJobActivity extends AppCompatActivity {
                             invoiceId = invoice.getInt("id");
 
                             String refCode = "";
+                            String extraFee = "";
 
                             if (!invoice.getString("paymentType").equals("BankPayment")) {
-                                refCode = invoice.getJSONObject("bonus").getString("referralCode");
+                                if (!invoice.isNull("bonus")){
+                                    refCode = invoice.getJSONObject("bonus").getString("referralCode");
+                                    extraFee = invoice.getJSONObject("bonus").getString("extraFee");
+                                }
                             }
 
                             invoiceList.add(new Invoice(invoice.getInt("id"), jobName,
                                     invoice.getString("date"), jobFee, invoice.getString("totalFee"),
                                     jobseeker.getString("name"), invoice.getString("invoiceStatus"),
-                                    invoice.getString("paymentType"), refCode));
+                                    invoice.getString("paymentType"), refCode, extraFee));
                         }
 
                     } else {
@@ -121,6 +128,7 @@ public class FinishedJobActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        return super.onSupportNavigateUp();
+        finish();
+        return true;
     }
 }

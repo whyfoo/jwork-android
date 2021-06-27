@@ -22,11 +22,12 @@ public class Invoice
     private String invoiceStatus;
     private String paymentType;
     private String refferalCode;
+    private String bonus;
 
     /**
      * Constructor untuk Invoice
      */
-    public Invoice(int id, String jobs, String date, String fee,String totalFee, String jobseeker, String invoiceStatus, String paymentType, String refferalCode)
+    public Invoice(int id, String jobs, String date, String fee,String totalFee, String jobseeker, String invoiceStatus, String paymentType, String refferalCode, String bonus)
     {
         this.id = id;
         this.jobs = jobs;
@@ -37,6 +38,7 @@ public class Invoice
         this.invoiceStatus = invoiceStatus;
         this.paymentType = paymentType;
         this.refferalCode = refferalCode;
+        this.bonus = bonus;
     }
 
     /**
@@ -128,6 +130,16 @@ public class Invoice
     public String getRefferalCode()
     {
         return refferalCode;
+    }
+
+    /**
+     * getter untuk mengambil data Referral code
+     *
+     * @return    Referral code pada invoice
+     */
+    public String getBonus()
+    {
+        return bonus;
     }
 }
 

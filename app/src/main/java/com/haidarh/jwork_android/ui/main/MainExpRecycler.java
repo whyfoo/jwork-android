@@ -29,7 +29,7 @@ public class MainExpRecycler extends BaseExpandableListAdapter {
 
     @Override
     public int getGroupCount() {
-        return childMapping.size();
+        return listRecruiter.size();
     }
 
     @Override
@@ -39,6 +39,7 @@ public class MainExpRecycler extends BaseExpandableListAdapter {
 
     @Override
     public Object getGroup(int groupPosition) {
+//        return childMapping.get(groupPosition);
         return listRecruiter.get(groupPosition);
     }
 
@@ -59,7 +60,7 @@ public class MainExpRecycler extends BaseExpandableListAdapter {
 
     @Override
     public boolean hasStableIds() {
-        return true;
+        return false;
     }
 
     @Override

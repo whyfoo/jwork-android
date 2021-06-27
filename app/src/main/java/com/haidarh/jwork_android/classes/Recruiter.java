@@ -130,7 +130,8 @@ public class Recruiter
                 "\nId = " + id +
                 "\nNama = " + name +
                 "\nPhoneNumber = " + phoneNumber +
-                "\nLocation = " + location.getDescription();
+                "\nLocation = " + location.getCity() +
+                "\nEmail = " + email;
     }
 
 }

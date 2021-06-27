@@ -92,34 +92,40 @@ public class ApplyJobActivity extends AppCompatActivity {
                 if (rbBank.isChecked()) {
                     tvTotalFee.setText(String.valueOf(jobFee));
                     btnApply.setEnabled(true);
-                } else if(rbEWallet.isChecked() && edtReferralCode.getText() != null) {
-                    Response.Listener<String> responseListener = new Response.Listener<String>()
-                    {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                JSONObject jsonObject = new JSONObject(response);
-                                if(jsonObject.getBoolean("active") && jsonObject.getInt("minTotalFee")<=jobFee)
-                                {
-                                    bonus = jsonObject.getInt("extraFee");
-                                    tvTotalFee.setText(String.valueOf(jobFee + bonus));
-                                    Toast.makeText(ApplyJobActivity.this, "Referral Code Found", Toast.LENGTH_LONG).show();
+                } else if(rbEWallet.isChecked()) {
+                    if (edtReferralCode.getText().length() > 0){
+                        Response.Listener<String> responseListener = new Response.Listener<String>()
+                        {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    if(jsonObject.getBoolean("active") && jsonObject.getInt("minTotalFee")<=jobFee)
+                                    {
+                                        bonus = jsonObject.getInt("extraFee");
+                                        tvTotalFee.setText(String.valueOf(jobFee + bonus));
+                                        Toast.makeText(ApplyJobActivity.this, "Referral Code Found", Toast.LENGTH_LONG).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(ApplyJobActivity.this, "Your Referral Code is inactive or your fee is lower than the minimum total fee", Toast.LENGTH_LONG).show();
+                                    }
+                                } catch(JSONException e) {
+                                    tvTotalFee.setText(String.valueOf(jobFee));
+                                    Toast.makeText(ApplyJobActivity.this, "Referral Code not Found", Toast.LENGTH_LONG).show();
                                 }
-                                else
-                                {
-                                    Toast.makeText(ApplyJobActivity.this, "Your Referral Code is inactive or your fee is lower than the minimum total fee", Toast.LENGTH_LONG).show();
-                                }
-                            } catch(JSONException e) {
-                                tvTotalFee.setText(String.valueOf(jobFee));
-                                Toast.makeText(ApplyJobActivity.this, "Referral Code not Found", Toast.LENGTH_LONG).show();
                             }
-                        }
-                    };
+                        };
 
-                    BonusRequest bonusRequest = new BonusRequest(edtReferralCode.getText().toString(), responseListener);
-                    RequestQueue queue = Volley.newRequestQueue(ApplyJobActivity.this);
-                    queue.add(bonusRequest);
-                    btnApply.setEnabled(true);
+
+                        BonusRequest bonusRequest = new BonusRequest(edtReferralCode.getText().toString(), responseListener);
+                        RequestQueue queue = Volley.newRequestQueue(ApplyJobActivity.this);
+                        queue.add(bonusRequest);
+                        btnApply.setEnabled(true);
+                    } else {
+                        tvTotalFee.setText(String.valueOf(jobFee));
+                        btnApply.setEnabled(true);
+                    }
                 } else {
                     Toast.makeText(ApplyJobActivity.this, "Select Payment Method first", Toast.LENGTH_LONG).show();
                 }

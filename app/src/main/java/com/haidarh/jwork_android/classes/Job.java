@@ -127,7 +127,7 @@ public class Job
         return  "===================== Job =====================" +
                 "\nId = " + id +
                 "\nNama = " + name +
-                "\nRecruiter = " + recruiter.getName() +
+                "\nRecruiter = " + recruiter +
                 "\nCity = " + getRecruiter().getLocation().getCity() +
                 "\nFee = " + fee +
                 "\nCategory = " + category.toString();

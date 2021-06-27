@@ -92,13 +92,14 @@ public class FinishedJobAdapter extends RecyclerView.Adapter<FinishedJobAdapter.
         holder.tvInvoiceStatus.setText(invoiceList.get(position).getInvoiceStatus());
         holder.tvTotalFee.setText(invoiceList.get(position).getTotalFee());
 
-        if (invoiceList.get(position).getPaymentType().equals("BankPayment")) {
+        if (invoiceList.get(position).getPaymentType().equals("BankPayment") || invoiceList.get(position).getRefferalCode().equals("")) {
             holder.titleRefCode.setVisibility(View.INVISIBLE);
             holder.tvRefCode.setVisibility(View.INVISIBLE);
         } else {
             holder.titleRefCode.setVisibility(View.VISIBLE);
             holder.tvRefCode.setVisibility(View.VISIBLE);
-            holder.tvRefCode.setText(invoiceList.get(position).getRefferalCode());
+            String refCode = String.format(invoiceList.get(position).getRefferalCode() + " (+%s)", invoiceList.get(position).getBonus());
+            holder.tvRefCode.setText(refCode);
         }
 
         if (invoiceList.get(position).getInvoiceStatus().equals("OnGoing")) {

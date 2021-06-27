@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainListAdapter extends BaseExpandableListAdapter {
+
     private Context context;
     private ArrayList<Recruiter> listDataHeader;
     private HashMap<Recruiter, ArrayList<Job>> listDataChild;
