@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
+    int jobseekerID;
 
     protected ArrayList<Recruiter> listRecruiter = new ArrayList<>();
     protected ArrayList<Job> jobIdList = new ArrayList<>();
@@ -55,13 +56,14 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPrefManager = new SharedPrefManager(this);
 
-        int jobseekerID;
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             jobseekerID = extras.getInt("jobseekerID");
         } else {
             jobseekerID = sharedPrefManager.getSPid();
         }
+
+        Toast.makeText(MainActivity.this, "jobseeker id: " + jobseekerID, Toast.LENGTH_LONG).show();
 
         refreshList();
 
@@ -79,13 +81,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void refreshList() {
-        int jobseekerID;
         Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            jobseekerID = extras.getInt("jobseekerId");
-        } else {
-            jobseekerID = sharedPrefManager.getSPid();
-        }
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override

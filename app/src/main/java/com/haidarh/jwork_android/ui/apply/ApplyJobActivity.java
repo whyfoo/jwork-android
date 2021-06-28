@@ -67,6 +67,8 @@ public class ApplyJobActivity extends AppCompatActivity {
         String jobCategory = extras.getString("jobCategory");
         int jobFee = extras.getInt("jobFee");
 
+        Toast.makeText(ApplyJobActivity.this, "jobseeker id: "+jobseekerID, Toast.LENGTH_LONG).show();
+
         tvJobName.setText(jobName);
         tvJobCategory.setText(jobCategory);
         tvJobFee.setText(String.valueOf(jobFee));

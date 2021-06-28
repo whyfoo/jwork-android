@@ -105,7 +105,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                intent.putExtra("jobseekerID", 1);
                 startActivity(intent);
             }
         });
