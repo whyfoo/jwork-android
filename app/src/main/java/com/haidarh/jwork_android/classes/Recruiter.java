@@ -2,6 +2,11 @@ package com.haidarh.jwork_android.classes;
 
 import com.haidarh.jwork_android.classes.Location;
 
+/**
+ * Kelas Recruiter.
+ *
+ * @author Haidar Hanif
+ */
 public class Recruiter
 {
     // variable instance
@@ -13,6 +18,12 @@ public class Recruiter
 
     /**
      * Constructor untuk Recruiter
+     *
+     * @param id          the id
+     * @param name        the name
+     * @param email       the email
+     * @param phoneNumber the phone number
+     * @param location    the location
      */
     public Recruiter(int id, String name, String email, String phoneNumber, Location location)
     {
@@ -26,7 +37,7 @@ public class Recruiter
     /**
      * getter untuk mengambil id
      *
-     * @return    id milik recruiter
+     * @return id milik recruiter
      */
     public int getId()
     {
@@ -36,7 +47,7 @@ public class Recruiter
     /**
      * getter untuk mengambil nama
      *
-     * @return    nama milik recruiter
+     * @return nama milik recruiter
      */
     public String getName()
     {
@@ -46,7 +57,7 @@ public class Recruiter
     /**
      * getter untuk mengambil email
      *
-     * @return    email milik recruiter
+     * @return email milik recruiter
      */
     public String getEmail()
     {
@@ -56,7 +67,7 @@ public class Recruiter
     /**
      * getter untuk mengambil phoneNumber
      *
-     * @return    phone number milik recruiter
+     * @return phone number milik recruiter
      */
     public String getPhoneNumber()
     {
@@ -66,7 +77,7 @@ public class Recruiter
     /**
      * getter untuk mengambil lokasi
      *
-     * @return    lokasi milik recruiter
+     * @return lokasi milik recruiter
      */
     public Location getLocation(){
         return location;
@@ -75,7 +86,7 @@ public class Recruiter
     /**
      * setter untuk mengatur nilai id
      *
-     * @param  id  parameter untuk mengganti id
+     * @param id parameter untuk mengganti id
      */
     public void setId(int id)
     {
@@ -85,7 +96,7 @@ public class Recruiter
     /**
      * setter untuk mengatur nilai name
      *
-     * @param  name  parameter untuk mengganti nama
+     * @param name parameter untuk mengganti nama
      */
     public void setName(String name)
     {
@@ -95,7 +106,7 @@ public class Recruiter
     /**
      * setter untuk mengatur nilai email
      *
-     * @param  email  parameter untuk mengganti email
+     * @param email parameter untuk mengganti email
      */
     public void setEmail(String email)
     {
@@ -105,7 +116,7 @@ public class Recruiter
     /**
      * setter untuk mengatur nilai phoneNumber
      *
-     * @param  phoneNumber  parameter untuk mengganti phoneNumber
+     * @param phoneNumber parameter untuk mengganti phoneNumber
      */
     public void setPhoneNumber(String phoneNumber)
     {
@@ -115,7 +126,7 @@ public class Recruiter
     /**
      * setter untuk mengatur data lokasi
      *
-     * @param  location  parameter untuk mengganti lokasi
+     * @param location parameter untuk mengganti lokasi
      */
     public void setLocation(Location location)
     {

@@ -29,14 +29,41 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+/**
+ * The Finished job activity, menampilkan daftar invoice yang telah dibuat user/jobseeker dalam bentuk RecyclerView
+ *
+ *
+ * @author Haidar Hanif
+ */
 public class FinishedJobActivity extends AppCompatActivity {
 
+    /**
+     * The Invoice id.
+     */
     int invoiceId;
+    /**
+     * The Context.
+     */
     Context context;
+    /**
+     * The Handler.
+     */
     Handler handler;
+    /**
+     * The Recycler view.
+     */
     RecyclerView recyclerView;
+    /**
+     * The Recycler view adapter.
+     */
     RecyclerView.Adapter recyclerViewAdapter;
+    /**
+     * The Recyler view layout manager.
+     */
     RecyclerView.LayoutManager recylerViewLayoutManager;
+    /**
+     * The Invoice list.
+     */
     ArrayList<Invoice> invoiceList = new ArrayList<Invoice>();
 
     @Override
@@ -66,6 +93,9 @@ public class FinishedJobActivity extends AppCompatActivity {
         },1000);
     }
 
+    /**
+     * melakukan request invoice by jobseeker
+     */
     private void fetchJob() {
         Bundle bundle = getIntent().getExtras();
         int jobseekerID = bundle.getInt("jobseekerID");
@@ -126,6 +156,11 @@ public class FinishedJobActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * fungsi tombol up/back.
+     *
+     * @return true finish activity dan kembali ke main activity.
+     */
     @Override
     public boolean onSupportNavigateUp() {
         finish();

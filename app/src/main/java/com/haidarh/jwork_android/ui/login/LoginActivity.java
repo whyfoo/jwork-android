@@ -25,8 +25,16 @@ import com.haidarh.jwork_android.request.LoginRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * The Login activity, melakukan login request dari input user
+ *
+ * @author Haidar Hanif
+ */
 public class LoginActivity extends AppCompatActivity {
 
+    /**
+     * inisialisasi Shared pref manager. Menyimpan status login user (id, email, login status)
+     */
     SharedPrefManager sharedPrefManager;
 
     @Override
@@ -34,20 +42,28 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        sharedPrefManager = new SharedPrefManager(this);
-
+        /**
+         *  inisialisasi elemen pada layout
+         */
         EditText etEmail = findViewById(R.id.et_email);
         EditText etPassword = findViewById(R.id.et_password);
         Button btnLogin = findViewById(R.id.btn_login);
         TextView tvRegister = findViewById(R.id.tv_register);
         TextInputLayout layoutPassword = findViewById(R.id.layout_password);
 
+        /**
+         * mengecek login status, jika sudah login = intent ke main activity
+         */
+        sharedPrefManager = new SharedPrefManager(this);
         if (sharedPrefManager.getSPLoginStatus()){
             startActivity(new Intent(LoginActivity.this, MainActivity.class)
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
             finish();
         }
 
+        /**
+         * click listener pada tombol login. request login ke server
+         */
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,6 +117,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * click listener pada tombol register. melakukan intent ke register activity
+         */
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

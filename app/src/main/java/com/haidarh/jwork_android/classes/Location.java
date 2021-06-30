@@ -1,5 +1,10 @@
 package com.haidarh.jwork_android.classes;
 
+/**
+ * Kelas Location.
+ *
+ * @author Haidar Hanif
+ */
 public class Location
 {
     private String province;
@@ -8,6 +13,10 @@ public class Location
 
     /**
      * Constructor untuk Location
+     *
+     * @param province    the province
+     * @param city        the city
+     * @param description the description
      */
     public Location(String province, String city, String description)
     {
@@ -19,7 +28,7 @@ public class Location
     /**
      * getter untuk mengambil provinsi
      *
-     * @return    province dari location
+     * @return province dari location
      */
     public String getProvince()
     {
@@ -29,7 +38,7 @@ public class Location
     /**
      * getter untuk mengambil city
      *
-     * @return    nilai city dari location
+     * @return nilai city dari location
      */
     public String getCity()
     {
@@ -39,7 +48,7 @@ public class Location
     /**
      * getter untuk mengambil description
      *
-     * @return    deskripsi dari location
+     * @return deskripsi dari location
      */
     public String getDescription()
     {
@@ -49,7 +58,7 @@ public class Location
     /**
      * setter untuk mengatur nilai province
      *
-     * @param  province  parameter untuk mengganti province
+     * @param province parameter untuk mengganti province
      */
     public void setProvince(String province)
     {
@@ -59,7 +68,7 @@ public class Location
     /**
      * setter untuk mengatur nilai city
      *
-     * @param  city  parameter untuk mengganti city
+     * @param city parameter untuk mengganti city
      */
     public void setCity(String city)
     {
@@ -69,7 +78,7 @@ public class Location
     /**
      * setter untuk mengatur deskripsi
      *
-     * @param  description  parameter untuk mengganti deskripsi
+     * @param description parameter untuk mengganti deskripsi
      */
     public void setDescription(String description)
     {

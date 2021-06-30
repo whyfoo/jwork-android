@@ -1,5 +1,10 @@
 package com.haidarh.jwork_android.classes;
 
+/**
+ * Kelas Job.
+ *
+ * @author Haidar Hanif
+ */
 public class Job
 {
     private int id;
@@ -10,6 +15,12 @@ public class Job
 
     /**
      * Constructor untuk Job
+     *
+     * @param id        the id
+     * @param name      the name
+     * @param recruiter the recruiter
+     * @param fee       the fee
+     * @param category  the category
      */
     public Job(int id, String name, Recruiter recruiter, int fee, String category)
     {
@@ -23,7 +34,7 @@ public class Job
     /**
      * getter untuk mengambil id
      *
-     * @return    id dari job
+     * @return id dari job
      */
     public int getId()
     {
@@ -33,7 +44,7 @@ public class Job
     /**
      * getter untuk mengambil name
      *
-     * @return    nama dari job
+     * @return nama dari job
      */
     public String getName()
     {
@@ -43,7 +54,7 @@ public class Job
     /**
      * getter untuk mengambil fee
      *
-     * @return    id dari job
+     * @return id dari job
      */
     public int getFee()
     {
@@ -53,7 +64,7 @@ public class Job
     /**
      * getter untuk mengambil category
      *
-     * @return    category dari job
+     * @return category dari job
      */
     public String getCategory()
     {
@@ -63,7 +74,7 @@ public class Job
     /**
      * getter untuk mengambil data recruiter
      *
-     * @return    data Recruiter dari job
+     * @return data Recruiter dari job
      */
     public Recruiter getRecruiter()
     {
@@ -73,7 +84,7 @@ public class Job
     /**
      * setter untuk mengatur nilai id
      *
-     * @param  id  parameter untuk mengganti id
+     * @param id parameter untuk mengganti id
      */
     public void setId(int id)
     {
@@ -83,7 +94,7 @@ public class Job
     /**
      * setter untuk mengatur nilai name
      *
-     * @param  name  parameter untuk mengganti name
+     * @param name parameter untuk mengganti name
      */
     public void setName(String name)
     {
@@ -93,7 +104,7 @@ public class Job
     /**
      * setter untuk mengatur nilai recruiter
      *
-     * @param  recruiter  parameter untuk mengganti data recruiter
+     * @param recruiter parameter untuk mengganti data recruiter
      */
     public void setRecruiter(Recruiter recruiter)
     {
@@ -103,7 +114,7 @@ public class Job
     /**
      * setter untuk mengatur nilai fee
      *
-     * @param  fee  parameter untuk mengganti data fee
+     * @param fee parameter untuk mengganti data fee
      */
     public void setFee(int fee)
     {
@@ -113,7 +124,7 @@ public class Job
     /**
      * setter untuk mengatur nilai category
      *
-     * @param  category  parameter untuk mengganti data category
+     * @param category parameter untuk mengganti data category
      */
     public void setCategory(String category)
     {

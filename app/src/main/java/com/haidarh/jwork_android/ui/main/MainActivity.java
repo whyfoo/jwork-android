@@ -34,16 +34,43 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * The Main activity, menampilkan daftar pekerjaan dan recruiter dari database job <br>
+ * klik pekerjaan = intent ke apply job activity
+ *
+ * @author Haidar Hanif
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * The Expandable list view.
+     */
     ExpandableListView expandableListView;
+    /**
+     * The Expandable list adapter.
+     */
     ExpandableListAdapter expandableListAdapter;
+    /**
+     * The Jobseeker id.
+     */
     int jobseekerID;
 
+    /**
+     * The List of recruiter.
+     */
     protected ArrayList<Recruiter> listRecruiter = new ArrayList<>();
+    /**
+     * The Job id list.
+     */
     protected ArrayList<Job> jobIdList = new ArrayList<>();
+    /**
+     * The Child mapping (recruiter to list of jobs).
+     */
     protected HashMap<Recruiter, ArrayList<Job>> childMapping = new HashMap<>();
 
+    /**
+     * The Shared pref manager.
+     */
     SharedPrefManager sharedPrefManager;
 
     @Override
@@ -63,8 +90,6 @@ public class MainActivity extends AppCompatActivity {
             jobseekerID = sharedPrefManager.getSPid();
         }
 
-        Toast.makeText(MainActivity.this, "jobseeker id: " + jobseekerID, Toast.LENGTH_LONG).show();
-
         refreshList();
 
         Button btnAppliedJob = findViewById(R.id.btn_applied_job);
@@ -80,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Refresh list.
+     * mengambil data job yang tersedia dari database job
+     */
     protected void refreshList() {
         Bundle extras = getIntent().getExtras();
 
@@ -174,24 +203,6 @@ public class MainActivity extends AppCompatActivity {
                                 return true;
                             }
                         });
-
-//                        ExpandableListView lvExp = findViewById(R.id.lvExpandable);
-//                        lvExp.setAdapter(new MainListAdapter(MainActivity.this, listRecruiter, childMapping));
-//
-//                        lvExp.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-//                            @Override
-//                            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-//                                Job selectedJob = childMapping.get(listRecruiter.get(groupPosition)).get(childPosition);
-//                                Intent intent = new Intent(MainActivity.this, ApplyJobActivity.class);
-//                                intent.putExtra("jobseekerID", jobseekerID);
-//                                intent.putExtra("jobID", selectedJob.getId());
-//                                intent.putExtra("jobName", selectedJob.getName());
-//                                intent.putExtra("jobCategory", selectedJob.getCategory());
-//                                intent.putExtra("jobFee", selectedJob.getFee());
-//                                startActivity(intent);
-//                                return true;
-//                            }
-//                        });
                     }
 
                 } catch (JSONException e) {

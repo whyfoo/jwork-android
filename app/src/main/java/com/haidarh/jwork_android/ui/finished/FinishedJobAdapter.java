@@ -25,34 +25,92 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+/**
+ * Recycler View adapter untuk finished job, menampilkan data dari kelas invoice yang telah diambil di finished job activity.
+ *
+ *  @author Haidar Hanif
+ */
 public class FinishedJobAdapter extends RecyclerView.Adapter<FinishedJobAdapter.ViewHolder> {
 
 
     private ArrayList<Invoice> invoiceList = new ArrayList<Invoice>();
     private Context context;
 
+    /**
+     * Instantiates a new Finished job adapter.
+     *
+     * @param context     the context
+     * @param invoiceList the invoice list
+     */
     FinishedJobAdapter(Context context, ArrayList<Invoice> invoiceList) {
         this.invoiceList = invoiceList;
         this.context = context;
     }
 
+    /**
+     * The type View holder.
+     */
     static class ViewHolder extends RecyclerView.ViewHolder {
 
+        /**
+         * The Title main.
+         */
         TextView titleMain;
+        /**
+         * The Tv jobseeker name.
+         */
         TextView tvJobseekerName;
+        /**
+         * The Tv invoice date.
+         */
         TextView tvInvoiceDate;
+        /**
+         * The Tv payment type.
+         */
         TextView tvPaymentType;
+        /**
+         * The Tv job name.
+         */
         TextView tvJobName;
+        /**
+         * The Tv total fee.
+         */
         TextView tvTotalFee;
+        /**
+         * The Tv fee.
+         */
         TextView tvFee;
+        /**
+         * The Tv invoice status.
+         */
         TextView tvInvoiceStatus;
+        /**
+         * The Title ref code.
+         */
         TextView titleRefCode;
+        /**
+         * The Tv ref code.
+         */
         TextView tvRefCode;
+        /**
+         * The Btn cancel.
+         */
         Button btnCancel;
+        /**
+         * The Btn finish.
+         */
         Button btnFinish;
+        /**
+         * The Progress bar.
+         */
         ProgressBar progressBar;
 
 
+        /**
+         * Instantiates a new View holder.
+         *
+         * @param v the v
+         */
         ViewHolder(View v) {
 
             super(v);

@@ -5,14 +5,12 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
- * Class of Invoice
+ * Kelas Invoice
  *
  * @author Haidar Hanif
- * @version 22-04-2021
  */
 public class Invoice
 {
-    // instance variables - replace the example below with your own
     private int id;
     private String jobs;
     private String date;
@@ -26,6 +24,17 @@ public class Invoice
 
     /**
      * Constructor untuk Invoice
+     *
+     * @param id            the id
+     * @param jobs          the jobs
+     * @param date          the date
+     * @param fee           the fee
+     * @param totalFee      the total fee
+     * @param jobseeker     the jobseeker
+     * @param invoiceStatus the invoice status
+     * @param paymentType   the payment type
+     * @param refferalCode  the refferal code
+     * @param bonus         the bonus
      */
     public Invoice(int id, String jobs, String date, String fee,String totalFee, String jobseeker, String invoiceStatus, String paymentType, String refferalCode, String bonus)
     {
@@ -44,7 +53,7 @@ public class Invoice
     /**
      * getter untuk mengambil id
      *
-     * @return    id dari invoice
+     * @return id dari invoice
      */
     public int getId()
     {
@@ -54,7 +63,7 @@ public class Invoice
     /**
      * getter untuk mengambil idJob
      *
-     * @return    idJob pada invoice
+     * @return idJob pada invoice
      */
     public String getJobs()
     {
@@ -64,7 +73,7 @@ public class Invoice
     /**
      * getter untuk mengambil tanggal
      *
-     * @return    tanggal dari invoice (date)
+     * @return tanggal dari invoice (date)
      */
     public String getDate()
     {
@@ -74,7 +83,7 @@ public class Invoice
     /**
      * getter untuk mengambi total fee
      *
-     * @return    fee pada job dalam invoice
+     * @return fee pada job dalam invoice
      */
     public String getFee()
     {
@@ -84,7 +93,7 @@ public class Invoice
     /**
      * getter untuk mengambil total fee
      *
-     * @return    total fee pada invoice
+     * @return total fee pada invoice
      */
     public String getTotalFee()
     {
@@ -94,7 +103,7 @@ public class Invoice
     /**
      * getter untuk mengambil data Jobseeker
      *
-     * @return    Jobseeker pada invoice
+     * @return Jobseeker pada invoice
      */
     public String getJobseeker()
     {
@@ -105,7 +114,7 @@ public class Invoice
     /**
      * getter untuk mengambil data status invoice
      *
-     * @return    Status pada invoice
+     * @return Status pada invoice
      */
     public String getInvoiceStatus()
     {
@@ -115,7 +124,7 @@ public class Invoice
     /**
      * getter untuk mengambil data Payment Type
      *
-     * @return    Payment Type pada invoice
+     * @return Payment Type pada invoice
      */
     public String getPaymentType()
     {
@@ -125,7 +134,7 @@ public class Invoice
     /**
      * getter untuk mengambil data Referral code
      *
-     * @return    Referral code pada invoice
+     * @return Referral code pada invoice
      */
     public String getRefferalCode()
     {
@@ -135,7 +144,7 @@ public class Invoice
     /**
      * getter untuk mengambil data Referral code
      *
-     * @return    Referral code pada invoice
+     * @return Referral code pada invoice
      */
     public String getBonus()
     {

@@ -19,6 +19,11 @@ import com.haidarh.jwork_android.request.RegisterRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * The Register activity, melakukan register request dari input user
+ *
+ * @author Haidar Hanif
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
@@ -29,7 +34,6 @@ public class RegisterActivity extends AppCompatActivity {
         EditText etName = findViewById(R.id.et_name);
         EditText etEmail = findViewById(R.id.et_email);
         EditText etPassword = findViewById(R.id.et_password);
-
         Button btnRegister = findViewById(R.id.btn_register);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {

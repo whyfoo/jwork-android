@@ -21,13 +21,13 @@ import com.haidarh.jwork_android.request.BonusRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * The Apply job activity, membuat invoice (bank/ewallet) dan menyimpannya ke database invoice
+ *
+ * @author Haidar Hanif
+ */
 public class ApplyJobActivity extends AppCompatActivity {
 
-    private int jobseekerID;
-    private int jobID;
-    private String jobName;
-    private String jobCategory;
-    private double jobFee;
     private int bonus;
     private String selectedPayment;
 
@@ -38,6 +38,9 @@ public class ApplyJobActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
+        /**
+         *  inisialisasi elemen pada layout
+         */
         TextView tvJobName = findViewById(R.id.tv_jobseeker_name);
         TextView tvJobCategory = findViewById(R.id.tv_invoice_date);
         TextView tvJobFee = findViewById(R.id.tv_job_name);
@@ -55,9 +58,6 @@ public class ApplyJobActivity extends AppCompatActivity {
         textCode.setVisibility(View.INVISIBLE);
         edtReferralCode.setVisibility(View.INVISIBLE);
 
-        tvJobName.setText(jobName);
-        tvJobCategory.setText(jobCategory);
-        tvJobFee.setText(String.valueOf(jobFee));
         tvTotalFee.setText("0");
 
         Bundle extras = getIntent().getExtras();
@@ -66,8 +66,6 @@ public class ApplyJobActivity extends AppCompatActivity {
         String jobName = extras.getString("jobName");
         String jobCategory = extras.getString("jobCategory");
         int jobFee = extras.getInt("jobFee");
-
-        Toast.makeText(ApplyJobActivity.this, "jobseeker id: "+jobseekerID, Toast.LENGTH_LONG).show();
 
         tvJobName.setText(jobName);
         tvJobCategory.setText(jobCategory);
@@ -89,6 +87,11 @@ public class ApplyJobActivity extends AppCompatActivity {
         });
 
         btnCount.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Click listener pada tombol count. menghitung total fee sesuai tipe payment yang dimasukkan
+             *
+             * @param view The view that was clicked.
+             */
             @Override
             public void onClick(View view) {
                 if (rbBank.isChecked()) {
@@ -135,6 +138,11 @@ public class ApplyJobActivity extends AppCompatActivity {
         });
 
         btnApply.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Click listener pada tombol apply. menyimpan invoice sesuai tipe payment pada database invoice
+             *
+             * @param v The view that was clicked.
+             */
             @Override
             public void onClick(View v) {
                 int selectedRadioId = rgPayMethod.getCheckedRadioButtonId();
